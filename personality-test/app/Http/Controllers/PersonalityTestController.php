@@ -21,11 +21,7 @@ class PersonalityTestController extends Controller
         }
         $score = array_sum($result);
 
-        if($score > $request->question_count * 2) {
-            $personality = "extrovert";
-        } else {
-            $personality = "introvert";
-        }
+        $personality = ($score > $request->question_count * 2) ? 'extrovert' : 'introvert';
 
         return view('result', compact('score', 'personality'));
     }
